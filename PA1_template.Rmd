@@ -28,7 +28,8 @@ head(totalsteps)
 2. If you do not understand the difference between a histogram and a barplot, research the difference between them.  
 Make a histogram of the total number of steps taken each day  
 ```{r, echo = TRUE}
-hist(totalsteps$steps, xlab = "steps", breaks = 16)
+a = hist(totalsteps$steps, xlab = "steps", breaks = 16)
+a
 ```
   
 3.Calculate and report the mean and median of the total number of steps taken per day  
@@ -42,8 +43,9 @@ median(totalsteps$steps)
 1. Make a time series plot (i.e. type = "1") of the 5 minute interval (x-axis) and  and the average number of steps taken, averaged across all days (y-axis)  
 ``` {r, echo = TRUE}
 average <- aggregate(steps ~ interval, data = data, mean, na.rm = TRUE)
-plot(average$interval, average$steps, type = "l", lwd = 2,
+b =plot(average$interval, average$steps, type = "l", lwd = 2,
      xlab = "5min interval", ylab = "Average number of steps")
+b
 ```
 
 2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?  
@@ -69,7 +71,8 @@ totalactivity <- aggregate(steps~date, data = activity, sum, na.rm = TRUE)
 ``` 
 4. Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?  
 ```{r, echo = TRUE}
-hist(totalactivity$steps, breaks = 16, xlab = "steps")
+c = hist(totalactivity$steps, breaks = 16, xlab = "steps")
+c
 mean(totalactivity$steps)
 median(totalactivity$steps)
 ```
@@ -89,5 +92,6 @@ activity$week <- factor(activity$week)
 ```{r, echo = TRUE}
 library(lattice)
 average_activity <- aggregate(steps ~interval + week, data = activity, mean)
-xyplot(steps ~interval | week, data = average_activity, type = "l", layout = c(2,1))
+d = xyplot(steps ~interval | week, data = average_activity, type = "l", layout = c(2,1))
+d
 ``` 
